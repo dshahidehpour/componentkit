@@ -56,10 +56,10 @@ Ok, so now we have our view controller as the component provider, let's create o
 	[super viewDidLoad];
 	...
 	self.dataSource = _dataSource = [[CKCollectionViewDataSource alloc] initWithCollectionView:self.collectionView
-                                                                  supplementaryViewDataSource:nil
-                                                                            componentProvider:[self class]
-                                                                                      context:context
-                                                                    cellConfigurationFunction:nil];
+                                                                       supplementaryViewDataSource:nil
+                                                                                 componentProvider:[self class]
+                                                                                           context:context
+                                                                         cellConfigurationFunction:nil];
 {% endhighlight %}
 
 
