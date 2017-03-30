@@ -2,9 +2,10 @@
 
 #import "CKHierarchyComponent.h"
 
-#import <ComponentKit/CKInsetComponent.h>
 #import <ComponentKit/CKLabelComponent.h>
 #import <ComponentKit/CKStackLayoutComponent.h>
+
+#import "CKHierarchyDepthComponent.h"
 
 @implementation CKHierarchyComponent
 
@@ -15,18 +16,18 @@
            newWithView:{}
            size:{}
            style:{
-             .direction = CKStackLayoutDirectionHorizontal
+             .direction = CKStackLayoutDirectionHorizontal,
+             .alignItems = CKStackLayoutAlignItemsStretch,
            }
            children:{
              {
-               [CKComponent
-                newWithView:{}
-                size:{.width = 15 * indentLevel }]
+               [CKHierarchyDepthComponent newWithDepthLevel:indentLevel]
              },
              {
                [CKLabelComponent
                 newWithLabelAttributes:{
-                  .string = text
+                  .string = text,
+                  .font = [UIFont systemFontOfSize:36],
                 }
                 viewAttributes:{
                   {@selector(setBackgroundColor:), [UIColor clearColor]},

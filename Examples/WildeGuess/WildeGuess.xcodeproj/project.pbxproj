@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		406040AC1E8D9EC600E40F3C /* CKComponentHierarchyCollectionViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 406040AB1E8D9EC600E40F3C /* CKComponentHierarchyCollectionViewController.mm */; };
 		407E1DF91E8DA61600F00DB6 /* CKHierarchyComponent.mm in Sources */ = {isa = PBXBuildFile; fileRef = 407E1DF81E8DA61600F00DB6 /* CKHierarchyComponent.mm */; };
+		407E1DFD1E8DB00300F00DB6 /* CKHierarchyDepthComponent.mm in Sources */ = {isa = PBXBuildFile; fileRef = 407E1DFC1E8DB00300F00DB6 /* CKHierarchyDepthComponent.mm */; };
+		407E1E001E8DB6E000F00DB6 /* CKHierarchyIndentComponent.mm in Sources */ = {isa = PBXBuildFile; fileRef = 407E1DFF1E8DB6E000F00DB6 /* CKHierarchyIndentComponent.mm */; };
 		A2BC94DC1AC235A60043B82F /* QuoteComponent.mm in Sources */ = {isa = PBXBuildFile; fileRef = A2BC94DB1AC235A60043B82F /* QuoteComponent.mm */; };
 		B34FB9761ABE8BA300D2D896 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = B34FB95B1ABE8BA300D2D896 /* AppDelegate.mm */; };
 		B34FB9771ABE8BA300D2D896 /* FrostedQuoteComponent.mm in Sources */ = {isa = PBXBuildFile; fileRef = B34FB95E1ABE8BA300D2D896 /* FrostedQuoteComponent.mm */; };
@@ -114,6 +116,10 @@
 		406040AB1E8D9EC600E40F3C /* CKComponentHierarchyCollectionViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = CKComponentHierarchyCollectionViewController.mm; path = Debug/CKComponentHierarchyCollectionViewController.mm; sourceTree = "<group>"; };
 		407E1DF71E8DA61600F00DB6 /* CKHierarchyComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CKHierarchyComponent.h; path = Debug/Components/CKHierarchyComponent.h; sourceTree = "<group>"; };
 		407E1DF81E8DA61600F00DB6 /* CKHierarchyComponent.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = CKHierarchyComponent.mm; path = Debug/Components/CKHierarchyComponent.mm; sourceTree = "<group>"; };
+		407E1DFB1E8DB00300F00DB6 /* CKHierarchyDepthComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKHierarchyDepthComponent.h; sourceTree = "<group>"; };
+		407E1DFC1E8DB00300F00DB6 /* CKHierarchyDepthComponent.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CKHierarchyDepthComponent.mm; sourceTree = "<group>"; };
+		407E1DFE1E8DB6E000F00DB6 /* CKHierarchyIndentComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CKHierarchyIndentComponent.h; path = Debug/Components/CKHierarchyIndentComponent.h; sourceTree = "<group>"; };
+		407E1DFF1E8DB6E000F00DB6 /* CKHierarchyIndentComponent.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = CKHierarchyIndentComponent.mm; path = Debug/Components/CKHierarchyIndentComponent.mm; sourceTree = "<group>"; };
 		A2BC94DA1AC235A60043B82F /* QuoteComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuoteComponent.h; sourceTree = "<group>"; };
 		A2BC94DB1AC235A60043B82F /* QuoteComponent.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = QuoteComponent.mm; sourceTree = "<group>"; };
 		B34FB95A1ABE8BA300D2D896 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -177,6 +183,10 @@
 			children = (
 				407E1DF71E8DA61600F00DB6 /* CKHierarchyComponent.h */,
 				407E1DF81E8DA61600F00DB6 /* CKHierarchyComponent.mm */,
+				407E1DFB1E8DB00300F00DB6 /* CKHierarchyDepthComponent.h */,
+				407E1DFC1E8DB00300F00DB6 /* CKHierarchyDepthComponent.mm */,
+				407E1DFE1E8DB6E000F00DB6 /* CKHierarchyIndentComponent.h */,
+				407E1DFF1E8DB6E000F00DB6 /* CKHierarchyIndentComponent.mm */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -419,9 +429,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B34FB97F1ABE8BA300D2D896 /* QuoteContext.m in Sources */,
+				407E1DFD1E8DB00300F00DB6 /* CKHierarchyDepthComponent.mm in Sources */,
 				B34FB9811ABE8BA300D2D896 /* QuotesPage.m in Sources */,
 				B34FB97E1ABE8BA300D2D896 /* Quote.m in Sources */,
 				407E1DF91E8DA61600F00DB6 /* CKHierarchyComponent.mm in Sources */,
+				407E1E001E8DB6E000F00DB6 /* CKHierarchyIndentComponent.mm in Sources */,
 				A2BC94DC1AC235A60043B82F /* QuoteComponent.mm in Sources */,
 				406040AC1E8D9EC600E40F3C /* CKComponentHierarchyCollectionViewController.mm in Sources */,
 				B34FB9801ABE8BA300D2D896 /* QuoteModelController.m in Sources */,
