@@ -12,6 +12,7 @@
 #import "AppDelegate.h"
 
 #import "WildeGuessCollectionViewController.h"
+#import "CKComponentHierarchyCollectionViewController.h"
 
 @implementation AppDelegate
 {
@@ -27,7 +28,7 @@
   [flowLayout setMinimumInteritemSpacing:0];
   [flowLayout setMinimumLineSpacing:0];
 
-  WildeGuessCollectionViewController *viewController = [[WildeGuessCollectionViewController alloc] initWithCollectionViewLayout:flowLayout];
+  CKComponentHierarchyCollectionViewController *viewController = [[CKComponentHierarchyCollectionViewController alloc] initWithCollectionViewLayout:flowLayout];
 
   [_window setRootViewController:[[UINavigationController alloc] initWithRootViewController:viewController]];
   [_window makeKeyAndVisible];

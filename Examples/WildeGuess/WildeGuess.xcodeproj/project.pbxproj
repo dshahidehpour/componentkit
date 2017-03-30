@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		406040AC1E8D9EC600E40F3C /* CKComponentHierarchyCollectionViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 406040AB1E8D9EC600E40F3C /* CKComponentHierarchyCollectionViewController.mm */; };
 		A2BC94DC1AC235A60043B82F /* QuoteComponent.mm in Sources */ = {isa = PBXBuildFile; fileRef = A2BC94DB1AC235A60043B82F /* QuoteComponent.mm */; };
 		B34FB9761ABE8BA300D2D896 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = B34FB95B1ABE8BA300D2D896 /* AppDelegate.mm */; };
 		B34FB9771ABE8BA300D2D896 /* FrostedQuoteComponent.mm in Sources */ = {isa = PBXBuildFile; fileRef = B34FB95E1ABE8BA300D2D896 /* FrostedQuoteComponent.mm */; };
@@ -28,6 +29,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		406040A41E8D9EA100E40F3C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D0B47DC41CBDAFFF00BB33CE /* ComponentKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 03B8B56A1D2A346F00EDFF59;
+			remoteInfo = ComponentKitAppleTV;
+		};
+		406040A61E8D9EA100E40F3C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D0B47DC41CBDAFFF00BB33CE /* ComponentKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 03A98A721D2B2BFD00C5BAC2;
+			remoteInfo = ComponentKitTestHelpersAppleTV;
+		};
+		406040A81E8D9EA100E40F3C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D0B47DC41CBDAFFF00BB33CE /* ComponentKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 03F1AC061D2B2A9B00867584;
+			remoteInfo = ComponentKitTestsAppleTV;
+		};
 		D093266C1CC4647700CFEBC4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D0B47DC41CBDAFFF00BB33CE /* ComponentKit.xcodeproj */;
@@ -87,6 +109,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		406040AA1E8D9EC600E40F3C /* CKComponentHierarchyCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CKComponentHierarchyCollectionViewController.h; path = Debug/CKComponentHierarchyCollectionViewController.h; sourceTree = "<group>"; };
+		406040AB1E8D9EC600E40F3C /* CKComponentHierarchyCollectionViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = CKComponentHierarchyCollectionViewController.mm; path = Debug/CKComponentHierarchyCollectionViewController.mm; sourceTree = "<group>"; };
 		A2BC94DA1AC235A60043B82F /* QuoteComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuoteComponent.h; sourceTree = "<group>"; };
 		A2BC94DB1AC235A60043B82F /* QuoteComponent.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = QuoteComponent.mm; sourceTree = "<group>"; };
 		B34FB95A1ABE8BA300D2D896 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -135,6 +159,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4060409A1E8D9EA100E40F3C /* Debug */ = {
+			isa = PBXGroup;
+			children = (
+				406040AA1E8D9EC600E40F3C /* CKComponentHierarchyCollectionViewController.h */,
+				406040AB1E8D9EC600E40F3C /* CKComponentHierarchyCollectionViewController.mm */,
+			);
+			name = Debug;
+			sourceTree = "<group>";
+		};
 		786CB3B26539B7FAEBFAF12A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -186,6 +219,7 @@
 		B3E848C21ABE848900377D52 /* WildeGuess */ = {
 			isa = PBXGroup;
 			children = (
+				4060409A1E8D9EA100E40F3C /* Debug */,
 				B34FB95C1ABE8BA300D2D896 /* Components */,
 				B34FB95A1ABE8BA300D2D896 /* AppDelegate.h */,
 				B34FB95B1ABE8BA300D2D896 /* AppDelegate.mm */,
@@ -219,11 +253,14 @@
 			isa = PBXGroup;
 			children = (
 				D093266D1CC4647700CFEBC4 /* ComponentKit.framework */,
-				D093266F1CC4647700CFEBC4 /* ComponentKitApplicationsTestsHost.app */,
+				D09326771CC4647700CFEBC4 /* libComponentKitTestHelpers.a */,
 				D09326711CC4647700CFEBC4 /* ComponentKitTests.xctest */,
 				D09326731CC4647700CFEBC4 /* ComponentKitApplicationTests.xctest */,
 				D09326751CC4647700CFEBC4 /* ComponentTextKitApplicationTests.xctest */,
-				D09326771CC4647700CFEBC4 /* libComponentKitTestHelpers.a */,
+				D093266F1CC4647700CFEBC4 /* ComponentKitApplicationsTestsHost.app */,
+				406040A51E8D9EA100E40F3C /* ComponentKit.framework */,
+				406040A71E8D9EA100E40F3C /* libComponentKitTestHelpers.a */,
+				406040A91E8D9EA100E40F3C /* ComponentKitTestsAppleTV.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -287,6 +324,27 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		406040A51E8D9EA100E40F3C /* ComponentKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ComponentKit.framework;
+			remoteRef = 406040A41E8D9EA100E40F3C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		406040A71E8D9EA100E40F3C /* libComponentKitTestHelpers.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libComponentKitTestHelpers.a;
+			remoteRef = 406040A61E8D9EA100E40F3C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		406040A91E8D9EA100E40F3C /* ComponentKitTestsAppleTV.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ComponentKitTestsAppleTV.xctest;
+			remoteRef = 406040A81E8D9EA100E40F3C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		D093266D1CC4647700CFEBC4 /* ComponentKit.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -351,6 +409,7 @@
 				B34FB9811ABE8BA300D2D896 /* QuotesPage.m in Sources */,
 				B34FB97E1ABE8BA300D2D896 /* Quote.m in Sources */,
 				A2BC94DC1AC235A60043B82F /* QuoteComponent.mm in Sources */,
+				406040AC1E8D9EC600E40F3C /* CKComponentHierarchyCollectionViewController.mm in Sources */,
 				B34FB9801ABE8BA300D2D896 /* QuoteModelController.m in Sources */,
 				B34FB9821ABE8BA300D2D896 /* WildeGuessCollectionViewController.mm in Sources */,
 				B34FB97B1ABE8BA300D2D896 /* SombreQuoteComponent.mm in Sources */,
