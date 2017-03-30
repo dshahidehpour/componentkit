@@ -26,10 +26,7 @@
                     {@selector(setBackgroundColor:), [UIColor blackColor]}
                   }
                 }
-                size:{
-                  .width = barThickness
-                }
-               ]
+                size:{.width = barThickness}]
              }
            }]];
 }
