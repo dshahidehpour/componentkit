@@ -4,6 +4,8 @@
 
 #import <ComponentKit/ComponentKit.h>
 
+#import "CKHierarchyComponent.h"
+
 @interface CKComponentHierarchyCollectionViewController () <CKComponentProvider, UICollectionViewDelegateFlowLayout>
 @end
 
@@ -53,11 +55,9 @@
 
 + (CKComponent *)componentForModel:(NSNumber *)model context:(id<NSObject>)context
 {
-  return [CKComponent
-          newWithView:{[UIView class],
-                      {{@selector(setBackgroundColor:), [UIColor redColor]},
-                       {@selector(setAlpha:), (1 - (model.floatValue * .1))}}}
-          size:{.height = 75}];
+  return [CKHierarchyComponent
+          newWithIndentLevel:model.integerValue
+          text:@"This is some text."];
 }
 
 #pragma mark - UICollectionViewDelegateFlowLayout
