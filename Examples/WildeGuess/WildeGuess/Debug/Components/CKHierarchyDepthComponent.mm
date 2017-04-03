@@ -13,12 +13,12 @@
   return [super newWithComponent:
           [CKStackLayoutComponent
            newWithView:{}
-           size:{.width = (depthLevel + 1) * 25}
+           size:{.width = (depthLevel + 1) * 10}
            style:{
              .direction = CKStackLayoutDirectionHorizontal,
              .alignItems = CKStackLayoutAlignItemsStretch,
            }
-           children:childrenWithLevel(depthLevel, 25)]];
+           children:childrenWithLevel(depthLevel, 10)]];
 }
 
 static std::vector<CKStackLayoutComponentChild> childrenWithLevel(NSInteger level, CGFloat width)
@@ -26,7 +26,7 @@ static std::vector<CKStackLayoutComponentChild> childrenWithLevel(NSInteger leve
   std::vector<CKStackLayoutComponentChild> children;
   
   for (int i=0; i<=level; i++) {
-    children.push_back({[CKHierarchyIndentComponent newWithWidth:width barThickness:3]});
+    children.push_back({[CKHierarchyIndentComponent newWithWidth:width barThickness:2]});
   }
   
   return children;
