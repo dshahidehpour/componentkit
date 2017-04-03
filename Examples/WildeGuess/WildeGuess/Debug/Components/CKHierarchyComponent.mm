@@ -3,6 +3,7 @@
 #import "CKHierarchyComponent.h"
 
 #import <ComponentKit/CKButtonComponent.h>
+#import <ComponentKit/CKComponentGestureActions.h>
 #import <ComponentKit/CKInsetComponent.h>
 #import <ComponentKit/CKStackLayoutComponent.h>
 
@@ -14,16 +15,25 @@
 
 @implementation CKHierarchyComponent
 {
-  CKTypedComponentAction<CKComponent *> _action;
+  CKTypedComponentAction<CKComponent *> _tapAction;
+  CKTypedComponentAction<CKComponent *> _infoAction;
 }
 
 + (instancetype)newWithModel:(CKComponentHierarchyModel *)model
-                  infoAction:(const CKTypedComponentAction<CKComponent *> &)action
+                   tapAction:(const CKTypedComponentAction<CKComponent *> &)tapAction
+                  infoAction:(const CKTypedComponentAction<CKComponent *> &)infoAction
 {
   CKComponentScope scope(self);
   CKHierarchyComponent *c =
-    [super newWithComponent:
-          [CKStackLayoutComponent
+    [super
+     newWithView:{
+       [UIView class],
+       {
+         CKComponentTapGestureAttribute(@selector(tappedComponent)),
+       }
+     }
+     component:
+     [CKStackLayoutComponent
            newWithView:{}
            size:{}
            style:{
@@ -73,7 +83,7 @@
                       titleFont:[UIFont systemFontOfSize:20]
                       selected:NO
                       enabled:YES
-                      action:{scope, @selector(tappedButtonWithEvent:)}
+                      action:{scope, @selector(tappedInfoButtonWithEvent:)}
                       size:{}
                       attributes:{}
                       accessibilityConfiguration:{}]
@@ -86,16 +96,24 @@
            }]];
   
   if (c) {
-    c->_action = action;
+    c->_infoAction = infoAction;
+    c->_tapAction = tapAction;
   }
   
   return c;
 }
 
-- (void)tappedButtonWithEvent:(UIEvent *)event
+- (void)tappedInfoButtonWithEvent:(UIEvent *)event
 {
-  if (_action) {
-    _action.send(self, self);
+  if (_infoAction) {
+    _infoAction.send(self, self);
+  }
+}
+
+- (void)tappedComponent
+{
+  if (_tapAction) {
+    _tapAction.send(self, self);
   }
 }
                   

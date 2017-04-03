@@ -64,12 +64,18 @@
 {
   return [CKHierarchyComponent
           newWithModel:model
+          tapAction:{context, @selector(tappedComponent:)}
           infoAction:{context, @selector(tappedInfoButton:)}];
+}
+
+- (void)tappedComponent:(CKComponent *)component
+{
+  NSLog(@"Tapped Component %@", component);
 }
 
 - (void)tappedInfoButton:(CKComponent *)component
 {
-  NSLog(@"Tapped %@", component);
+  NSLog(@"Tapped Info %@", component);
 }
           
 #pragma mark - UICollectionViewDelegateFlowLayout

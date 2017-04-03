@@ -8,6 +8,7 @@
 @interface CKHierarchyComponent : CKCompositeComponent
 
 + (instancetype)newWithModel:(CKComponentHierarchyModel *)model
-                  infoAction:(const CKTypedComponentAction<CKComponent *> &)action;
+                   tapAction:(const CKTypedComponentAction<CKComponent *> &)tapAction
+                  infoAction:(const CKTypedComponentAction<CKComponent *> &)infoAction;
 
 @end
