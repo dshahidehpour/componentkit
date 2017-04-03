@@ -21,7 +21,7 @@
                [CKLabelComponent
                 newWithLabelAttributes:{
                   .string = title,
-                  .font = [UIFont systemFontOfSize:36],
+                  .font = [UIFont systemFontOfSize:16],
                 }
                 viewAttributes:{
                   {@selector(setBackgroundColor:), [UIColor clearColor]},

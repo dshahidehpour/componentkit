@@ -40,7 +40,11 @@
                                                                           configuration:configuration];
   NSMutableDictionary<NSIndexPath *, CKComponentHierarchyModel *> *items = [NSMutableDictionary dictionary];
   for (int i=0; i<4; i++) {
-    CKComponentHierarchyModel *model = [[CKComponentHierarchyModel alloc] initWithTitle:@"Some Name" subtitle:@"Soon" indentLevel:i];
+    CKComponentHierarchyModel *model =
+    [[CKComponentHierarchyModel alloc]
+     initWithTitle:@"CKStackLayoutComponent"
+     subtitle:NSStringFromCGRect(CGRectMake(0, 414, 57, 56))
+     indentLevel:i];
     
     [items setObject:model forKey:[NSIndexPath indexPathForItem:i inSection:0]];
   }

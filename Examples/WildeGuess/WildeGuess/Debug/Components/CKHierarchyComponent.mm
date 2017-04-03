@@ -30,7 +30,15 @@
                [CKHierarchyDepthComponent newWithDepthLevel:model.indentLevel]
              },
              {
-               [CKHierarchyDescriptionComponent newWithTitle:model.title subtitle:model.subtitle],
+               [CKInsetComponent
+                newWithInsets:{
+                  .top = 6,
+                  .bottom = 6,
+                }
+                component:
+                [CKHierarchyDescriptionComponent
+                 newWithTitle:model.title
+                 subtitle:model.subtitle]],
                .flexShrink = 1,
              },
              {
