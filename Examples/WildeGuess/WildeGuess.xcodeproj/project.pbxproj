@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4043F32A1E92E8FB009D74EB /* CKComponentHierarchyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4043F3291E92E8FB009D74EB /* CKComponentHierarchyModel.m */; };
+		4043F3361E92EC86009D74EB /* CKHierarchyDescriptionComponent.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4043F3351E92EC86009D74EB /* CKHierarchyDescriptionComponent.mm */; };
 		406040AC1E8D9EC600E40F3C /* CKComponentHierarchyCollectionViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 406040AB1E8D9EC600E40F3C /* CKComponentHierarchyCollectionViewController.mm */; };
 		407E1DF91E8DA61600F00DB6 /* CKHierarchyComponent.mm in Sources */ = {isa = PBXBuildFile; fileRef = 407E1DF81E8DA61600F00DB6 /* CKHierarchyComponent.mm */; };
 		407E1E001E8DB6E000F00DB6 /* CKHierarchyIndentComponent.mm in Sources */ = {isa = PBXBuildFile; fileRef = 407E1DFF1E8DB6E000F00DB6 /* CKHierarchyIndentComponent.mm */; };
@@ -115,6 +116,8 @@
 /* Begin PBXFileReference section */
 		4043F3281E92E8FB009D74EB /* CKComponentHierarchyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CKComponentHierarchyModel.h; path = Debug/CKComponentHierarchyModel.h; sourceTree = "<group>"; };
 		4043F3291E92E8FB009D74EB /* CKComponentHierarchyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CKComponentHierarchyModel.m; path = Debug/CKComponentHierarchyModel.m; sourceTree = "<group>"; };
+		4043F3341E92EC86009D74EB /* CKHierarchyDescriptionComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKHierarchyDescriptionComponent.h; sourceTree = "<group>"; };
+		4043F3351E92EC86009D74EB /* CKHierarchyDescriptionComponent.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CKHierarchyDescriptionComponent.mm; sourceTree = "<group>"; };
 		406040AA1E8D9EC600E40F3C /* CKComponentHierarchyCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CKComponentHierarchyCollectionViewController.h; path = Debug/CKComponentHierarchyCollectionViewController.h; sourceTree = "<group>"; };
 		406040AB1E8D9EC600E40F3C /* CKComponentHierarchyCollectionViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = CKComponentHierarchyCollectionViewController.mm; path = Debug/CKComponentHierarchyCollectionViewController.mm; sourceTree = "<group>"; };
 		407E1DF71E8DA61600F00DB6 /* CKHierarchyComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CKHierarchyComponent.h; path = Debug/Components/CKHierarchyComponent.h; sourceTree = "<group>"; };
@@ -192,6 +195,8 @@
 				407E1DF81E8DA61600F00DB6 /* CKHierarchyComponent.mm */,
 				407E1DFE1E8DB6E000F00DB6 /* CKHierarchyIndentComponent.h */,
 				407E1DFF1E8DB6E000F00DB6 /* CKHierarchyIndentComponent.mm */,
+				4043F3341E92EC86009D74EB /* CKHierarchyDescriptionComponent.h */,
+				4043F3351E92EC86009D74EB /* CKHierarchyDescriptionComponent.mm */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -433,6 +438,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4043F3361E92EC86009D74EB /* CKHierarchyDescriptionComponent.mm in Sources */,
 				B34FB97F1ABE8BA300D2D896 /* QuoteContext.m in Sources */,
 				B34FB9811ABE8BA300D2D896 /* QuotesPage.m in Sources */,
 				B34FB97E1ABE8BA300D2D896 /* Quote.m in Sources */,
