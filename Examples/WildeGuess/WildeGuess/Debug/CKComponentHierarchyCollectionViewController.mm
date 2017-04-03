@@ -5,6 +5,7 @@
 #import <ComponentKit/ComponentKit.h>
 
 #import "CKHierarchyComponent.h"
+#import "CKComponentHierarchyModel.h"
 
 @interface CKComponentHierarchyCollectionViewController () <CKComponentProvider, UICollectionViewDelegateFlowLayout>
 @end
@@ -37,9 +38,11 @@
   _dataSource = [[CKCollectionViewTransactionalDataSource alloc] initWithCollectionView:self.collectionView
                                                             supplementaryViewDataSource:nil
                                                                           configuration:configuration];
-  NSMutableDictionary<NSIndexPath *, NSNumber *> *items = [NSMutableDictionary dictionary];
+  NSMutableDictionary<NSIndexPath *, CKComponentHierarchyModel *> *items = [NSMutableDictionary dictionary];
   for (int i=0; i<4; i++) {
-    [items setObject:@(i) forKey:[NSIndexPath indexPathForItem:i inSection:0]];
+    CKComponentHierarchyModel *model = [[CKComponentHierarchyModel alloc] initWithTitle:@"Some Name" subtitle:@"Soon" indentLevel:i];
+    
+    [items setObject:model forKey:[NSIndexPath indexPathForItem:i inSection:0]];
   }
   
   // Insert the initial section
@@ -53,11 +56,9 @@
 
 #pragma mark - CKComponentProvider
 
-+ (CKComponent *)componentForModel:(NSNumber *)model context:(id<NSObject>)context
++ (CKComponent *)componentForModel:(CKComponentHierarchyModel *)model context:(id<NSObject>)context
 {
-  return [CKHierarchyComponent
-          newWithIndentLevel:model.integerValue
-          text:@"This is some text."];
+  return [CKHierarchyComponent newWithModel:model];
 }
 
 #pragma mark - UICollectionViewDelegateFlowLayout

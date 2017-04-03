@@ -6,10 +6,11 @@
 #import <ComponentKit/CKStackLayoutComponent.h>
 
 #import "CKHierarchyDepthComponent.h"
+#import "CKComponentHierarchyModel.h"
 
 @implementation CKHierarchyComponent
 
-+ (instancetype)newWithIndentLevel:(NSInteger)indentLevel text:(NSString *)text
++ (instancetype)newWithModel:(CKComponentHierarchyModel *)model
 {
   return [super newWithComponent:
           [CKStackLayoutComponent
@@ -21,19 +22,41 @@
            }
            children:{
              {
-               [CKHierarchyDepthComponent newWithDepthLevel:indentLevel]
+               [CKHierarchyDepthComponent newWithDepthLevel:model.indentLevel]
              },
              {
-               [CKLabelComponent
-                newWithLabelAttributes:{
-                  .string = text,
-                  .font = [UIFont systemFontOfSize:36],
+               [CKStackLayoutComponent
+                newWithView:{}
+                size:{}
+                style:{
+                  .direction = CKStackLayoutDirectionVertical,
                 }
-                viewAttributes:{
-                  {@selector(setBackgroundColor:), [UIColor clearColor]},
-                  {@selector(setUserInteractionEnabled:), @NO},
-                }
-                size:{}]
+                children:{
+                  {
+                    [CKLabelComponent
+                     newWithLabelAttributes:{
+                       .string = model.title,
+                       .font = [UIFont systemFontOfSize:36],
+                     }
+                     viewAttributes:{
+                       {@selector(setBackgroundColor:), [UIColor clearColor]},
+                       {@selector(setUserInteractionEnabled:), @NO},
+                     }
+                     size:{}]
+                  },
+                  {
+                    [CKLabelComponent
+                     newWithLabelAttributes:{
+                       .string = model.subtitle,
+                       .font = [UIFont systemFontOfSize:12],
+                     }
+                     viewAttributes:{
+                       {@selector(setBackgroundColor:), [UIColor clearColor]},
+                       {@selector(setUserInteractionEnabled:), @NO},
+                     }
+                     size:{}]
+                  }
+                }]
              },
            }]];
 }

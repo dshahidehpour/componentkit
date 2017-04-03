@@ -2,8 +2,10 @@
 
 #import <ComponentKit/CKCompositeComponent.h>
 
+@class CKComponentHierarchyModel;
+
 @interface CKHierarchyComponent : CKCompositeComponent
 
-+ (instancetype)newWithIndentLevel:(NSInteger)indentLevel text:(NSString *)text;
++ (instancetype)newWithModel:(CKComponentHierarchyModel *)model;
 
 @end
