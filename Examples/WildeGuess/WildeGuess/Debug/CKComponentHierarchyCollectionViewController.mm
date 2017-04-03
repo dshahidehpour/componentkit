@@ -33,7 +33,7 @@
   const CKSizeRange sizeRange = [_sizeProvider sizeRangeForBoundingSize:self.collectionView.bounds.size];
   CKTransactionalComponentDataSourceConfiguration *configuration =
   [[CKTransactionalComponentDataSourceConfiguration alloc] initWithComponentProvider:[self class]
-                                                                             context:nil
+                                                                             context:self
                                                                            sizeRange:sizeRange];
   _dataSource = [[CKCollectionViewTransactionalDataSource alloc] initWithCollectionView:self.collectionView
                                                             supplementaryViewDataSource:nil
@@ -58,9 +58,16 @@
 
 + (CKComponent *)componentForModel:(CKComponentHierarchyModel *)model context:(id<NSObject>)context
 {
-  return [CKHierarchyComponent newWithModel:model];
+  return [CKHierarchyComponent
+          newWithModel:model
+          infoAction:{context, @selector(tappedInfoButton:)}];
 }
 
+- (void)tappedInfoButton:(UIEvent *)event
+{
+  NSLog(@"Tapped %@", event);
+}
+          
 #pragma mark - UICollectionViewDelegateFlowLayout
 
 - (CGSize)collectionView:(UICollectionView *)collectionView

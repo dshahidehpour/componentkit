@@ -2,6 +2,7 @@
 
 #import "CKHierarchyComponent.h"
 
+#import <ComponentKit/CKButtonComponent.h>
 #import <ComponentKit/CKInsetComponent.h>
 #import <ComponentKit/CKStackLayoutComponent.h>
 
@@ -9,9 +10,12 @@
 #import "CKHierarchyDescriptionComponent.h"
 #import "CKComponentHierarchyModel.h"
 
+#import <UIKit/UIKit.h>
+
 @implementation CKHierarchyComponent
 
 + (instancetype)newWithModel:(CKComponentHierarchyModel *)model
+                  infoAction:(const CKTypedComponentAction<UIEvent *> &)action
 {
   return [super newWithComponent:
           [CKStackLayoutComponent
@@ -43,16 +47,27 @@
                     [CKInsetComponent
                      newWithInsets:{.right = 10}
                      component:
-                     [CKComponent
-                      newWithView:{
-                        [UIView class],
-                        {
-                          {@selector(setBackgroundColor:), [UIColor redColor]},
-                        }
+                     [CKButtonComponent
+                      newWithTitles:{
+                        { UIControlStateNormal, @"Info" }
                       }
-                      size:{.minWidth = 20}]]
+                      titleColors:{
+                        { UIControlStateNormal, [UIColor blueColor] },
+                        { UIControlStateHighlighted, [UIColor lightGrayColor] },
+                      }
+                      images:{}
+                      backgroundImages:{}
+                      titleFont:[UIFont systemFontOfSize:20]
+                      selected:NO
+                      enabled:YES
+                      action:action
+                      size:{}
+                      attributes:{}
+                      accessibilityConfiguration:{}]
+                     ]
                   },
                 }],
+               .alignSelf = CKStackLayoutAlignSelfCenter,
                .flexGrow = 1,
              }
            }]];
