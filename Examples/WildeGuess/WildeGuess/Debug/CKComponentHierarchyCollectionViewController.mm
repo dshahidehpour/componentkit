@@ -67,9 +67,9 @@
           infoAction:{context, @selector(tappedInfoButton:)}];
 }
 
-- (void)tappedInfoButton:(UIEvent *)event
+- (void)tappedInfoButton:(CKComponent *)component
 {
-  NSLog(@"Tapped %@", event);
+  NSLog(@"Tapped %@", component);
 }
           
 #pragma mark - UICollectionViewDelegateFlowLayout

@@ -8,6 +8,6 @@
 @interface CKHierarchyComponent : CKCompositeComponent
 
 + (instancetype)newWithModel:(CKComponentHierarchyModel *)model
-                  infoAction:(const CKTypedComponentAction<UIEvent *> &)action;
+                  infoAction:(const CKTypedComponentAction<CKComponent *> &)action;
 
 @end

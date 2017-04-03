@@ -13,11 +13,16 @@
 #import <UIKit/UIKit.h>
 
 @implementation CKHierarchyComponent
+{
+  CKTypedComponentAction<CKComponent *> _action;
+}
 
 + (instancetype)newWithModel:(CKComponentHierarchyModel *)model
-                  infoAction:(const CKTypedComponentAction<UIEvent *> &)action
+                  infoAction:(const CKTypedComponentAction<CKComponent *> &)action
 {
-  return [super newWithComponent:
+  CKComponentScope scope(self);
+  CKHierarchyComponent *c =
+    [super newWithComponent:
           [CKStackLayoutComponent
            newWithView:{}
            size:{}
@@ -68,7 +73,7 @@
                       titleFont:[UIFont systemFontOfSize:20]
                       selected:NO
                       enabled:YES
-                      action:action
+                      action:{scope, @selector(tappedButtonWithEvent:)}
                       size:{}
                       attributes:{}
                       accessibilityConfiguration:{}]
@@ -79,6 +84,19 @@
                .flexGrow = 1,
              }
            }]];
+  
+  if (c) {
+    c->_action = action;
+  }
+  
+  return c;
 }
 
+- (void)tappedButtonWithEvent:(UIEvent *)event
+{
+  if (_action) {
+    _action.send(self, self);
+  }
+}
+                  
 @end
