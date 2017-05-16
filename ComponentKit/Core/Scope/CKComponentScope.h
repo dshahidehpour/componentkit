@@ -11,12 +11,13 @@
 #import <Foundation/Foundation.h>
 
 #import <ComponentKit/CKComponentContext.h>
+#import <ComponentKit/CKComponentScopeHandle.h>
 #import <ComponentKit/CKUpdateMode.h>
 
 #include <memory>
 
 class CKThreadLocalComponentScope;
-@class CKComponentScopeHandle;
+@class CKScopedResponder;
 @class CKComponentKeyStorage;
 
 typedef void (^CKComponentStateUpdater)(id (^updateBlock)(id),
@@ -72,11 +73,15 @@ public:
   CKComponentStateUpdater stateUpdater(void) const noexcept;
 
   /**
-   @return The scope handle associated with this scope.
-   @discussion This is exposed for use by the framework. You should almost certainly never call this for any reason
-               in your components.
+   @return A pointer to an object that will return the first responder for a
+     component.
    */
-  CKComponentScopeHandle *scopeHandle(void) const noexcept;
+  CKScopedResponder *scopedResponder() const noexcept;
+  
+  /**
+   @return The class of the component that was used to create this scope.
+   */
+  Class<CKScopedComponent> componentClass() const noexcept;
 
 private:
   CKComponentScope(const CKComponentScope&) = delete;

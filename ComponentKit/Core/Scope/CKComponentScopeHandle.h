@@ -16,6 +16,7 @@
 
 @class CKComponent;
 @class CKComponentScopeRoot;
+@class CKScopedResponder;
 
 @protocol CKComponentStateListener;
 @protocol CKScopedComponent;
@@ -62,8 +63,17 @@
 @property (nonatomic, readonly) CKComponentScopeHandleIdentifier globalIdentifier;
 
 /**
- Provides a responder corresponding with this scope handle. The controller will assert if called before resolution.
+ Provides a block that, when called, will return the responder associated with the "current" component generation.
  */
-- (id)responder;
+- (CKScopedResponder *)scopedResponder;
 
+/**
+ Used by the infra. Don't call unless you know what you are doing.
+ */
+- (void)assignNewResponder;
+
+@end
+
+@interface CKScopedResponder : NSObject
+- (id)responder;
 @end

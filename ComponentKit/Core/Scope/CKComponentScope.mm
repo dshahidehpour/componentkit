@@ -58,7 +58,13 @@ CKComponentStateUpdater CKComponentScope::stateUpdater(void) const noexcept
   };
 }
 
-CKComponentScopeHandle *CKComponentScope::scopeHandle(void) const noexcept
+CKScopedResponder *CKComponentScope::scopedResponder() const noexcept
 {
-  return _scopeHandle;
+  return _scopeHandle.scopedResponder;
 }
+
+Class<CKScopedComponent> CKComponentScope::componentClass() const noexcept
+{
+  return _scopeHandle.componentClass;
+}
+
