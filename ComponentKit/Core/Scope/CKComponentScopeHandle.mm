@@ -25,17 +25,6 @@
 
 @implementation CKScopedResponder
 
-- (BOOL)isEqual:(id)object
-{
-  if (self == object) {
-    return YES;
-  } else if ([object isKindOfClass:[self class]]) {
-    CKScopedResponder *other = object;
-    return _responder == other->_responder;
-  }
-  return NO;
-}
-
 - (id)responder
 {
   return _responder;
