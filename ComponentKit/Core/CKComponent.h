@@ -46,6 +46,8 @@ struct CKComponentViewContext {
  */
 - (CKComponentViewContext)viewContext;
 
+- (id)responder;
+
 /**
  While the component is mounted, returns its next responder. This is the first of:
  - Its component controller, if it has one;

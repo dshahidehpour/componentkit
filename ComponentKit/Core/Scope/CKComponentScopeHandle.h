@@ -67,19 +67,6 @@
  */
 - (CKScopedResponder *)scopedResponder;
 
-/**
- Used by the infra. Don't call unless you know what you are doing.
- 
- Within ComponentKit we can generate a brand new component hierarchy, and choose to discard it. As a result,
- we could temporarily have multiple component hierarchies in existence (which multiple scope handles that have the same
- global identifier), and as a result, share references to the same `CKScopedResponder`.
- 
- However, the scopedResponder can only point to a single responder. By calling this method you are informing the 
- scope handle that its' responder is the new source of truth
- for any handle in existence that references the same ScopedResponder.
- */
-- (void)assignNewResponder;
-
 @end
 
 @interface CKScopedResponder : NSObject

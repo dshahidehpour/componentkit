@@ -10,6 +10,8 @@
 
 #import "CKComponentScopeHandle.h"
 
+#include <set>
+
 #import "CKComponentScopeRoot.h"
 #import "CKComponentSubclass.h"
 #import "CKComponentInternal.h"
@@ -20,16 +22,11 @@
 #import "CKThreadLocalComponentScope.h"
 
 @interface CKScopedResponder ()
-@property (nonatomic, weak, readwrite) id responder;
+- (void)addHandleToChain:(CKComponentScopeHandle *)component;
 @end
 
-@implementation CKScopedResponder
-
-- (id)responder
-{
-  return _responder;
-}
-
+@interface CKComponentScopeHandle ()
+@property (nonatomic, readonly, weak) id<CKScopedComponent> acquiredComponent;
 @end
 
 @implementation CKComponentScopeHandle
@@ -39,7 +36,6 @@
   CKComponentScopeRootIdentifier _rootIdentifier;
   BOOL _acquired;
   BOOL _resolved;
-  CKComponent *__weak _acquiredComponent;
   CKScopedResponder *_scopedResponder;
 }
 
@@ -53,11 +49,6 @@
   CKComponentScopeHandle *handle = currentScope->stack.top().frame.handle;
   if ([handle acquireFromComponent:component]) {
     [currentScope->newScopeRoot registerComponent:component];
-
-    CKScopedResponder *const scopedResponder = handle->_scopedResponder;
-    if (scopedResponder.responder == nil) {
-      scopedResponder.responder = component;
-    }
 
     return handle;
   }
@@ -98,7 +89,9 @@
     _componentClass = componentClass;
     _state = state;
     _controller = controller;
+
     _scopedResponder = scopedResponder;
+    [scopedResponder addHandleToChain:self];
   }
   return self;
 }
@@ -196,14 +189,52 @@
   _resolved = YES;
 }
 
-- (void)assignNewResponder
-{
-  _scopedResponder.responder = _acquiredComponent;
-}
-
 - (CKScopedResponder *)scopedResponder
 {
   return _scopedResponder;
+}
+
+@end
+
+@implementation CKScopedResponder
+{
+  std::vector<__weak CKComponentScopeHandle *> _handles;
+  dispatch_queue_t _responderQueue;
+}
+
+- (instancetype)init
+{
+  if (self = [super init]) {
+    _responderQueue = dispatch_queue_create("com.facebook.componentkit.responderqueue", DISPATCH_QUEUE_SERIAL);
+  }
+  
+  return self;
+}
+
+- (void)addHandleToChain:(CKComponentScopeHandle *)handle
+{
+  if (handle) {
+    dispatch_async(_responderQueue, ^{
+      _handles.push_back(handle);
+    });
+  }
+}
+
+- (id)responder
+{
+  __block id<CKScopedComponent> responder = nil;
+  dispatch_sync(_responderQueue, ^{
+    auto it = _handles.rbegin();
+    while (it != _handles.rend()) {
+      responder = (*it).acquiredComponent;
+      if (responder) {
+        break;
+      }
+      it++;
+    }
+  });
+  
+  return responder;
 }
 
 @end

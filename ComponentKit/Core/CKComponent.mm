@@ -193,7 +193,6 @@ struct CKComponentMountInfo {
 
 - (void)childrenDidMount
 {
-  [_scopeHandle assignNewResponder];
   [_scopeHandle.controller componentDidMount:self];
 }
 
@@ -337,6 +336,11 @@ static void *kRootComponentMountedViewKey = &kRootComponentMountedViewKey;
   CKAssertNotNil(_scopeHandle, @"A component without state cannot update its state.");
   CKAssertNotNil(updateBlock, @"Cannot enqueue component state modification with a nil update block.");
   [_scopeHandle updateState:updateBlock userInfo:nil mode:mode];
+}
+
+- (id)responder
+{
+  return [_scopeHandle.scopedResponder responder];
 }
 
 - (CKComponentController *)controller

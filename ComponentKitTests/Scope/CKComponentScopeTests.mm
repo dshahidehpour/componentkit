@@ -12,6 +12,7 @@
 
 #import <ComponentKit/CKCompositeComponent.h>
 
+#import <ComponentKit/CKBuildComponent.h>
 #import <ComponentKit/CKComponentScope.h>
 #import <ComponentKit/CKComponentScopeFrame.h>
 #import <ComponentKit/CKComponentScopeHandle.h>
@@ -23,6 +24,19 @@
 #import <ComponentKit/CKThreadLocalComponentScope.h>
 
 @protocol TestScopedProtocol <NSObject>
+@end
+
+@interface TestComponentWithScope : CKCompositeComponent
+@end
+@implementation TestComponentWithScope
+
++ (instancetype)new
+{
+  CKComponentScope scope(self);
+  
+  return [super newWithComponent:[CKComponent newWithView:{[UIView class]} size:{}]];
+}
+
 @end
 
 @interface TestComponentWithScopedProtocol : NSObject <CKScopedComponent, TestScopedProtocol>
@@ -211,6 +225,23 @@
       XCTAssertEqualObjects(state, @"door");
     }
   }
+}
+
+#pragma mark - Component Scope Handle Responders
+
+- (void)testSmoke
+{
+  CKComponent *(^block)(void) = ^{
+    return [TestComponentWithScope new];
+  };
+  const CKBuildComponentResult firstResult = CKBuildComponent(CKComponentScopeRootWithDefaultPredicates(nil), {}, block);
+  
+  @autoreleasepool {
+    const CKBuildComponentResult secondResult = CKBuildComponent(firstResult.scopeRoot, {}, block);
+    XCTAssertEqual([firstResult.component responder], secondResult.component);
+  }
+
+  XCTAssertEqual([firstResult.component responder], firstResult.component);
 }
 
 #pragma mark - Component Scope Handle Global Identifier
